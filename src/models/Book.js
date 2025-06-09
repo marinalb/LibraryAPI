@@ -3,7 +3,11 @@ import { authorSchema } from "./Author.js";
 
 const bookSchema = new mongoose.Schema({
     id: {type: mongoose.Schema.Types.ObjectId},
-    price: {type: Number},
+    price: {
+        type: Number,
+        min: [5, "MIN PRICE U$5"],
+        max: 1000
+    },
     publisher: {type: String},
     title: {type: String, required: true},
     author: authorSchema
